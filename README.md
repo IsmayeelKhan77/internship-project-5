@@ -1,33 +1,54 @@
-##🛡️ Custom SIEM Dashboard using ELK Stack
-📌 Project Overview
+# Project 5 — Custom SIEM Dashboard (Elastic)
 
-This project focuses on designing and implementing a custom Security Information and Event Management (SIEM) dashboard using the Elastic Stack (ELK).
-The dashboard visualizes critical security events such as brute-force attacks, privilege escalations, and data exfiltration attempts to help detect suspicious activity in real time.
+**Author:** Ismayeel  
+**Project:** Build a simple SIEM dashboard (Elastic) that shows brute-force, privilege escalation and possible exfiltration.
 
-⚙️ Steps Completed
+---
 
-1. Data Ingestion:
-Uploaded security log data into Kibana using the File Data Visualizer.
-Created an index (siem_index) and data view for log analysis.
+## Short summary
+I built a small SIEM dashboard in Elastic (Kibana) that shows:
+- Brute-force attempts (failed logins)
+- Privilege escalation events (sudo, commands)
+- Potential data exfiltration (curl/wget/scp)
+- Login success vs failure
 
-2. Data Visualization:
-Built multiple visualizations in Kibana Lens:
-Failed Login Attempts Over Time (to monitor brute-force attempts)
-Privilege Escalation Events
-Data Exfiltration Attempts
-Login Success vs Failure Comparison
+This was made as part of my internship project.
 
-3. Dashboard Creation:
-Combined all visualizations into a single SIEM Dashboard.
-Added titles and descriptions for clarity.
+---
 
-🧠 Key Learnings
-Hands-on experience with Elastic Stack for log ingestion and visualization.
-Understanding of SIEM principles and how to detect real-world attack patterns.
-Improved ability to analyze and interpret security data visually.
+## Index / Data
+- **Index / Data view used:** `siem_index`  
+  (When creating visualizations in Lens, pick this data view.)
 
-📸 Dashboard Preview
+---
 
-Screenshot1:
-Screenshot2:
+## KQL / Filters I used (copy-paste into Kibana Discover or Lens filter bar)
 
+**Brute-force (failed logins)** 
+message:("Failed password" OR "Failed login")
+
+**Privilege escalation (sudo / elevated commands)**  
+message:(sudo OR "COMMAND=" OR "root")
+
+**Possible exfiltration (download/transfer commands)**  
+message:(curl OR wget OR scp OR rsync OR ftp)
+
+**Successful logins**  
+message:("Accepted password" OR "Accepted publickey" OR "session opened")
+
+
+---
+
+
+## How to use / reproduce quickly
+1. Open Kibana → Visualize (Lens) and choose the data view.  
+2. Paste the KQL filters above in the query bar to test.  
+3. Create visualizations per the titles above and then add them to a dashboard.  
+4. Save the dashboard as: **SIEM Dashboard – Security Events Overview**
+
+---
+
+## Notes / Evidence
+- This is a basic detection/dashboard setup made with internship data. It shows good coverage for common stuff like brute-force, sudo, and command-based exfiltration.
+- Screenshots 1:
+- Screenshots 2: 
