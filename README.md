@@ -50,5 +50,5 @@ message:("Accepted password" OR "Accepted publickey" OR "session opened")
 
 ## Notes / Evidence
 - This is a basic detection/dashboard setup made with internship data. It shows good coverage for common stuff like brute-force, sudo, and command-based exfiltration.
-- Screenshots 1:
+- Screenshots 1: https://github.com/IsmayeelKhan77/internship-project-5-SIEM-Elastic/blob/main/Screenshots/screenshot1.png?raw=true
 - Screenshots 2: 
